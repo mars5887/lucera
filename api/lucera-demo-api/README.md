@@ -16,4 +16,4 @@ This will install a NodeJs image and a MongoDB image and wire them together. Whe
 If you do not use <a href="https://docs.docker.com/compose/">Docker Compose</a> to run the api server, you must <a href="https://www.mongodb.com/download-center/communityon">install MongoDb</a> for your target platform and change the <a href="https://github.com/mars5887/lucera/blob/master/api/lucera-demo-api/src/data/persist/index.js">server definition</a> (var server = [your mongo server]) for the mongo DB connection. You can then start the api server with 'npm start'
 
 ### Mongo Tuning:
-There is no <a href="https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/" >performance tuning</a> set up for mongo instance, i.e. indexes etc. With this in mind, the performance can be even better than it already is.
+There is no <a href="https://docs.mongodb.com/manual/administration/analyzing-mongodb-performance/" >performance tuning</a> set up for the mongo instance, i.e. indexes etc. With this in mind, the performance can be even better than it already is.
