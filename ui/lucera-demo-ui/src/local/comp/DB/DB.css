@@ -1,0 +1,40 @@
+.dashboard {
+  display: flex;
+  flex-flow: row wrap;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 auto;
+
+  @media only screen and (min-width: 900px) {
+    width: 80%;
+  }
+}
+
+.db-tile-border {
+  margin: 2px;
+  height: 100%;
+}
+
+.db-tile-cont {
+  width: 100%;
+  height: auto;
+}
+
+.flex-rectangle{
+    width: 100%;
+}
+.flex-rectangle:before{
+    content: "";
+    display: block;
+    padding-top: 25%;
+}
+
+.flex-square{
+    width: 30%;
+    background: #ca0164;
+}
+.flex-square:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
