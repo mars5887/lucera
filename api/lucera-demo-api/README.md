@@ -8,7 +8,7 @@ In the project directory, to build the api run:
 
 In the project directory, to start api run:
 
-### `docker-compose up`
+### `docker-compose up --build`
 
 ### Notes:
 This will install a NodeJs image and a MongoDB image and wire them together. When the server starts it will load the csv sample data into MongoDB.
