@@ -9,6 +9,9 @@ import DBTileContainer from './DBContainer';
 import Tile from '../../uicomp/Tile/Tile';
 import BarGraph from '../../uicomp/BarGraph/BarGraph';
 import Table from '../../uicomp/Table/Table';
+import {
+  message,
+} from 'antd';
 
 import Dropdown from '../../uicomp/Dropdown/Dropdown';
 
@@ -26,7 +29,7 @@ export default class Dashboard extends Component {
 
     // tiles currently in use
     let tiles = [],
-         key = 0;
+         key = 20;
 
     for (let i = 0; i < tileOptions.length; i++) {
       tiles.push({ name: tileOptions[i].name, key: key++ });
@@ -49,12 +52,12 @@ export default class Dashboard extends Component {
     // }
   }
 
-  addTile = () => {
+  addTile = (key) => {
     let tiles = this.state.tiles.slice()
-    let key = this.state.key + 1;
+    let newKey = this.state.key + 1;
 
-    tiles.push({ name: this.state.tileOptions.currentItem.name, key: key });
-    this.setState({ tiles: tiles, key: key });
+    tiles.push({ name: this.state.tileOptions[key].name, key: newKey });
+    this.setState({ tiles: tiles, key: newKey });
   }
 
   removeTile = (tileIndex) => {
@@ -80,13 +83,19 @@ export default class Dashboard extends Component {
     throw new Error(`Sorry tile: ${name} not found `);
   }
 
+  handleMenuClick =(e) => {
+    this.addTile(e.key);
+  }
+
   render() {
     return(
       <div className="container">
 
-        <AddTileRow show = {false}
+        <AddTileRow show = {true}
                     tileOptions={this.state.tileOptions}
                     addTile= {this.addTile}
+                    handleMenuClick={this.handleMenuClick}
+
         />
 
         <div className="dashboard">
@@ -123,14 +132,11 @@ function AddTileRow(props) {
         <label>
           Select a tile type: {' '}
           <Dropdown
+            menuClick= {props.handleMenuClick}
             itemsSource={ props.tileOptions }
             displayMemberPath="name" />
           {' '}
-          <button
-            className="btn btn-primary"
-            onClick={ props.addTile }>
-            Add Tile
-          </button>
+
         </label>
       </div>
     )
